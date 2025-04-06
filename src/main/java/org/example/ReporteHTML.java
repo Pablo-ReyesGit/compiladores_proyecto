@@ -12,9 +12,9 @@ public class ReporteHTML {
     private static final List<String> erroresLexicos = new ArrayList<>();
     //private static final List<String> tablaSimbolos = new ArrayList<>();
 
-    public static void agregarToken(String tipo, String valor) {
-        String tipotoken = obtenerDescripcionToken(Integer.parseInt(tipo)); // Método para obtener la descripción textual
-        tokens.add("<tr><td>" + tipotoken + "</td><td>" + valor + "</td></tr>");
+    public static void agregarToken(String tipo, String valor, int fila, int columna) {
+        String tipotoken = obtenerDescripcionToken(Integer.parseInt(tipo));
+        tokens.add("<tr><td>" + tipotoken + "</td><td>" + valor + "</td><td>" + fila + "</td><td>" + columna + "</td></tr>");
     }
 
     public static String obtenerDescripcionToken(int codigo) {
@@ -65,7 +65,7 @@ public class ReporteHTML {
     }*/
 
     public static void generarReporte() {
-        generarArchivo("src/main/java/org/example/tokens.html", "Tokens Reconocidos", tokens, "Token", "Valor");
+        generarArchivo("src/main/java/org/example/tokens.html", "Tokens Reconocidos", tokens, "Token", "Valor", "Fila", "Columna");
         generarArchivo("src/main/java/org/example/errores_lexicos.html", "Errores Lexicos", erroresLexicos, "Error");
        // generarArchivo("C:/Users/Emanuel Castellanos/IdeaProjects/Parser/src/main/java/org/example/tabla_simbolos.html", "Tabla de Símbolos", tablaSimbolos, "Nombre", "Tipo", "Valor");
     }

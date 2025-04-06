@@ -43,7 +43,7 @@ public class Main {
                 System.out.println("Token: " + t.image + " - Tipo: " + t.kind);
 
                 // Agregar tokens al reporte HTML con el número en vez del nombre
-                ReporteHTML.agregarToken(String.valueOf(t.kind), t.image);
+                ReporteHTML.agregarToken(String.valueOf(t.kind), t.image, t.beginLine, t.beginColumn);
             }
         } catch (Exception e) {
             System.err.println("Error durante el análisis léxico.");
