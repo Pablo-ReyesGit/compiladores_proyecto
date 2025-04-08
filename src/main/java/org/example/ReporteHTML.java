@@ -18,42 +18,42 @@ public class ReporteHTML {
     }
 
     public static String obtenerDescripcionToken(int codigo) {
-            if (codigo >= 13 && codigo <= 70) {
-                return "Palabra clave";
-            } else if (codigo >= 71 && codigo <= 80) {
-                return "Plabra sensible al contexto";
-            } else if (codigo >= 81 && codigo <= 83) {
-                return "Valores literales reservaos";
-            } else if (codigo >= 84 && codigo <= 92) {
-                return "Signos de puntuacion";
-            } else if (codigo >= 93 && codigo <= 97) {
-                return "Operador aritmetico";
-            } else if (codigo >= 84 && codigo <= 92) {
-                return "Signos de puntuacion";
-            } else if (codigo == 98) {
-                return "Signos de asignacion";
-            } else if (codigo >= 99 && codigo <= 101) {
-                return "Signos unarios";
-            } else if (codigo >= 102 && codigo <= 106) {
-                return "Signos aritmeticos combinarios";
-            } else if (codigo >= 107 && codigo <= 112) {
-                return "Signos de puntuacion";
-            } else if (codigo >= 113 && codigo <= 118) {
-                return "Signos logicos o booleanos";
-            } else if (codigo >= 119 && codigo <= 120) {
-                return "desplazamientos";
-            } else if (codigo == 121) {
-                return "Identificadores";
-            } else if (codigo == 122) {
-                return "Numerico";
-            } else if (codigo == 123) {
-                return "Cadena de texto";
-            } else if (codigo == 0) {
-                return "Default";
-            } else if (codigo == 1) {
-                return "Comentario";
+        if (codigo >= 13 && codigo <= 70) {
+            return "Palabra clave";
+        } else if (codigo >= 71 && codigo <= 80) {
+            return "Plabra sensible al contexto";
+        } else if (codigo >= 81 && codigo <= 83) {
+            return "Valores literales reservaos";
+        } else if (codigo >= 84 && codigo <= 92) {
+            return "Signos de puntuacion";
+        } else if (codigo >= 93 && codigo <= 97) {
+            return "Operador aritmetico";
+        } else if (codigo >= 84 && codigo <= 92) {
+            return "Signos de puntuacion";
+        } else if (codigo == 98) {
+            return "Signos de asignacion";
+        } else if (codigo >= 99 && codigo <= 101) {
+            return "Signos unarios";
+        } else if (codigo >= 102 && codigo <= 106) {
+            return "Signos aritmeticos combinarios";
+        } else if (codigo >= 107 && codigo <= 112) {
+            return "Signos de puntuacion";
+        } else if (codigo >= 113 && codigo <= 118) {
+            return "Signos logicos o booleanos";
+        } else if (codigo >= 119 && codigo <= 120) {
+            return "desplazamientos";
+        } else if (codigo == 121) {
+            return "Identificadores";
+        } else if (codigo == 122) {
+            return "Numerico";
+        } else if (codigo == 123) {
+            return "Cadena de texto";
+        } else if (codigo == 0) {
+            return "Default";
+        } else if (codigo == 1) {
+            return "Comentario";
         }
-            return "error*";
+        return "error*";
     }
 
     public static void agregarError(String valor) {
@@ -67,7 +67,7 @@ public class ReporteHTML {
     public static void generarReporte() {
         generarArchivo("src/main/java/org/example/tokens.html", "Tokens Reconocidos", tokens, "Token", "Valor", "Fila", "Columna");
         generarArchivo("src/main/java/org/example/errores_lexicos.html", "Errores Lexicos", erroresLexicos, "Error");
-       // generarArchivo("C:/Users/Emanuel Castellanos/IdeaProjects/Parser/src/main/java/org/example/tabla_simbolos.html", "Tabla de Símbolos", tablaSimbolos, "Nombre", "Tipo", "Valor");
+        // generarArchivo("C:/Users/Emanuel Castellanos/IdeaProjects/Parser/src/main/java/org/example/tabla_simbolos.html", "Tabla de Símbolos", tablaSimbolos, "Nombre", "Tipo", "Valor");
     }
 
     private static void generarArchivo(String nombre, String titulo, List<String> contenido, String... encabezados) {

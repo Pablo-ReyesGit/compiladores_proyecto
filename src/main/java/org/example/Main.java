@@ -58,7 +58,7 @@ public class Main {
 
     private static void procesarLinea(String linea, TablaSimbolos tablaSimbolos) {
         // Expresión regular para capturar declaraciones de variables
-        Pattern pattern = Pattern.compile("(int|float|double|String)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*=\\s*([^;]+);");
+        Pattern pattern = Pattern.compile("(entero|flotante|doble|cadena)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*=\\s*([^;]+);");
         Matcher matcher = pattern.matcher(linea);
 
         while (matcher.find()) {
@@ -67,7 +67,7 @@ public class Main {
             String valor = matcher.group(3);
 
             tablaSimbolos.agregarSimbolo(nombre, tipo, valor);
+            tablaSimbolos.agregarSimbolo(token, tipo);
         }
     }
 }
-

@@ -2,6 +2,12 @@ publico clase HolaMundo {
     publico statico vacio principal(String[] args) {
         sistema.afuera.imprimir_linea("¡Hola, mundo!");
         entero numero = 5;
+        char letra = a;
+        caracter letra = a;
+        double num = 0;
+        doble num = 0;
+        string cadena = adf;
+        cadena string = fdg;
         si (numero > 0) {
             sistema.afuera.imprimir_linea("El número es positivo.");
         } si_no {

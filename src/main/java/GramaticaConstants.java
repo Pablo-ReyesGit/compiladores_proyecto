@@ -63,7 +63,7 @@ public interface GramaticaConstants {
   /** RegularExpression Id. */
   int INSTANCEOF = 38;
   /** RegularExpression Id. */
-  int INT = 39;
+  int ENTERO = 39;
   /** RegularExpression Id. */
   int INTERFACE = 40;
   /** RegularExpression Id. */
