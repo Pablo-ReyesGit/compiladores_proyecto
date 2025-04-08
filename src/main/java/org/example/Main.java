@@ -14,7 +14,7 @@ public class Main {
         try {
             // Ruta del archivo de prueba
             FileReader fileReader = new FileReader("src\\Javacc\\Txt_Prueba_AL.txt");
-            TablaSimbolos tablaSimbolos = new TablaSimbolos();
+            tablaSimbolos tablaSimbolos = new tablaSimbolos();
 
             try (BufferedReader br = new BufferedReader(new FileReader("src\\Javacc\\Txt_Prueba_AL.txt"))) {
                 String linea;
@@ -56,7 +56,7 @@ public class Main {
         System.out.println("Análisis léxico terminado.");
     }
 
-    private static void procesarLinea(String linea, TablaSimbolos tablaSimbolos) {
+    private static void procesarLinea(String linea, tablaSimbolos tablaSimbolos) {
         // Expresión regular para capturar declaraciones de variables
         Pattern pattern = Pattern.compile("(entero|flotante|doble|cadena)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*=\\s*([^;]+);");
         Matcher matcher = pattern.matcher(linea);
@@ -67,7 +67,7 @@ public class Main {
             String valor = matcher.group(3);
 
             tablaSimbolos.agregarSimbolo(nombre, tipo, valor);
-            tablaSimbolos.agregarSimbolo(token, tipo);
+            //tablaSimbolos.agregarSimbolo(token, tipo);
         }
     }
 }
