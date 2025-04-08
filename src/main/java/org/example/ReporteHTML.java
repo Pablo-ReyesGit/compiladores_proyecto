@@ -96,15 +96,50 @@ public class ReporteHTML {
     }
     public static void generarTablaSimbolos(Map<String, Simbolo> tablaSimbolos, String rutaArchivo) {
         try (FileWriter writer = new FileWriter(rutaArchivo)) {
-            writer.write("<html><head><title>Tabla de Símbolos</title></head><body>");
-            writer.write("<h2>Tabla de Símbolos</h2>");
-            writer.write("<table border='1'><tr><th>Nombre</th><th>Tipo</th><th>Valor</th></tr>");
+            writer.write("""
+            <html>
+            <head>
+                <title>Tabla de Símbolos</title>
+                <style>
+                    body { font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; }
+                    h2 { color: #333; }
+                    table { width: 90%; border-collapse: collapse; margin: 20px 0; }
+                    th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: center; }
+                    th { background-color: #f2f2f2; }
+                    tr:nth-child(even) { background-color: #f9f9f9; }
+                    tr:hover { background-color: #e0f7fa; }
+                </style>
+            </head>
+            <body>
+                <h2>Tabla de Símbolos</h2>
+                <table>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                        <th>Línea</th>
+                        <th>Columna</th>
+                    </tr>
+        """);
 
+            int index = 1;
             for (Simbolo simbolo : tablaSimbolos.values()) {
-                writer.write("<tr><td>" + simbolo.getNombre() + "</td><td>" + simbolo.getTipo() + "</td><td>" + simbolo.getValor() + "</td></tr>");
+                writer.write("<tr>");
+                writer.write("<td>" + index++ + "</td>");
+                writer.write("<td>" + simbolo.getNombre() + "</td>");
+                writer.write("<td>" + simbolo.getTipo() + "</td>");
+                writer.write("<td>" + simbolo.getValor() + "</td>");
+                writer.write("<td>" + simbolo.getLinea() + "</td>");
+                writer.write("<td>" + simbolo.getColumna() + "</td>");
+                writer.write("</tr>");
             }
 
-            writer.write("</table></body></html>");
+            writer.write("""
+                </table>
+            </body>
+            </html>
+        """);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         GramaticaTokenManager lexer = null;
         try {
+            int numeroLinea = 1;
             // Ruta del archivo de prueba
             FileReader fileReader = new FileReader("src\\Javacc\\Txt_Prueba_AL.txt");
             tablaSimbolos tablaSimbolos = new tablaSimbolos();
@@ -19,7 +20,8 @@ public class Main {
             try (BufferedReader br = new BufferedReader(new FileReader("src\\Javacc\\Txt_Prueba_AL.txt"))) {
                 String linea;
                 while ((linea = br.readLine()) != null) {
-                    procesarLinea(linea, tablaSimbolos);
+                    procesarLinea(linea, numeroLinea, tablaSimbolos);
+                    numeroLinea++;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -56,18 +58,22 @@ public class Main {
         System.out.println("Análisis léxico terminado.");
     }
 
-    private static void procesarLinea(String linea, tablaSimbolos tablaSimbolos) {
-        // Expresión regular para capturar declaraciones de variables
-        Pattern pattern = Pattern.compile("(entero|flotante|doble|cadena)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*=\\s*([^;]+);");
+    private static void procesarLinea(String linea, int numeroLinea, tablaSimbolos tablaSimbolos) {
+        Pattern pattern = Pattern.compile("\\b(entero|flotante|doble|caracter|cadena)\\b\\s+([a-zA-Z_][a-zA-Z0-9_]*)(?:\\s*=\\s*([^;]+))?\\s*;");
         Matcher matcher = pattern.matcher(linea);
 
         while (matcher.find()) {
             String tipo = matcher.group(1);
             String nombre = matcher.group(2);
             String valor = matcher.group(3);
+            int columna = matcher.start(2) + 1;
 
-            tablaSimbolos.agregarSimbolo(nombre, tipo, valor);
-            //tablaSimbolos.agregarSimbolo(token, tipo);
+            if (valor == null) {
+                valor = "null";
+            }
+
+            tablaSimbolos.agregarSimbolo(nombre, tipo, valor, numeroLinea, columna);
         }
     }
+
 }

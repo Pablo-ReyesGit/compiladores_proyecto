@@ -4,22 +4,21 @@ public class Simbolo {
     private String nombre;
     private String tipo;
     private String valor;
+    private int linea;
+    private int columna;
 
-    public Simbolo(String nombre, String tipo, String valor) {
+    public Simbolo(String nombre, String tipo, String valor, int linea, int columna) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.valor = valor;
+        this.linea = linea;
+        this.columna = columna;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public String getValor() {
-        return valor;
-    }
+    // Getters
+    public String getNombre() { return nombre; }
+    public String getTipo() { return tipo; }
+    public String getValor() { return valor; }
+    public int getLinea() { return linea; }
+    public int getColumna() { return columna; }
 }
